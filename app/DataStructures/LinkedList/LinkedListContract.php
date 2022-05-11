@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\DataStructures;
+namespace App\DataStructures\LinkedList;
 
 
 interface LinkedListContract

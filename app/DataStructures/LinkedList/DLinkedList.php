@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\DataStructures;
+namespace App\DataStructures\LinkedList;
 
 
-class LinkedList implements LinkedListContract
+class DLinkedList implements LinkedListContract
 {
     use HasShow;
 
@@ -17,6 +17,7 @@ class LinkedList implements LinkedListContract
             $this->head = $this->last = $node;
         } else {
             $node->setNext($this->head);
+            $this->head->setPrevious($node);
             $this->head = $node;
         }
         return $this;
@@ -28,12 +29,12 @@ class LinkedList implements LinkedListContract
             $this->head = $this->last = $node;
         } else {
             $this->last->setNext($node);
+            $node->setPrevious($this->last);
             $this->last = $node;
         }
 
         return $this;
     }
-
 
     public function deleteFromFirst(): self
     {
@@ -46,10 +47,9 @@ class LinkedList implements LinkedListContract
             return $this;
         }
 
-        $head = $this->head;
-        $next = $head->getNext();
-        $head->setNext(null);// automatically garbage collected then
-        $this->head = $next;dd($head,$this->head);
+        $next = $this->head->getNext();
+        $next->setPrevious(null); // unset($this->head);// automatically garbage collected because there is no other references to this node
+        $this->head = $next;
         return $this;
     }
 
@@ -64,23 +64,15 @@ class LinkedList implements LinkedListContract
             return $this;
         }
 
-        $secondLast = $this->getSecondLast();
-        $secondLast->setNext(null);  // automatically garbage collected then
-        $this->last = $secondLast;
+        $previous = $this->last->getPrevious();
+        $previous->setNext(null);// unset($this->last);// automatically garbage collected because there is no other references to this node
+        $this->last = $previous;
         return $this;
-    }
-
-    private function getSecondLast(): Node
-    {
-        $item = $this->head;
-        for ($i = $item->getNext(); $i->getNext() !== null; $i = $i->getNext()) {
-            $item = $i;
-        }
-        return $item;
     }
 
     private function getLink(): string
     {
-        return ' ==> ';
+        return ' <==> ';
     }
+
 }

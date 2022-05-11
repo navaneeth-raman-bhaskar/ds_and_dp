@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 
 
 use App\Core\Http\Controller;
-use App\DataStructures\LinkedList;
-use App\DataStructures\DLinkedList;
-use App\DataStructures\Node;
-use App\DataStructures\DNode;
+use App\DataStructures\LinkedList\LinkedList;
+use App\DataStructures\LinkedList\DLinkedList;
+use App\DataStructures\LinkedList\Node;
+use App\DataStructures\LinkedList\DNode;
 
 class DataStructureController //extends Controller
 {
