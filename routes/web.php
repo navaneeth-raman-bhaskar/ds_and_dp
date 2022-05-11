@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('linkedlist',[\App\Http\Controllers\DataStructureController::class,'linkedlist']);
+Route::get('stack',[\App\Http\Controllers\DataStructureController::class,'stack']);

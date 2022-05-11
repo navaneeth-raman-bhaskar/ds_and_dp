@@ -8,12 +8,14 @@ class LinkedList implements LinkedListContract
 {
     use HasShow;
 
-    private ?NodeContract $head = null;
-    private ?NodeContract $last = null;
+    private ?Node $head = null;
+    private ?Node $last = null;
 
-    public function addToFirst(NodeContract $node): self
+    public function addToFirst(mixed $value): self
     {
-        if ($this->listIsEmpty()) {
+        $node = new Node($value);
+
+        if ($this->isEmpty()) {
             $this->head = $this->last = $node;
         } else {
             $node->setNext($this->head);
@@ -22,9 +24,11 @@ class LinkedList implements LinkedListContract
         return $this;
     }
 
-    public function addToLast(NodeContract $node): self
+    public function addToLast(mixed $value): self
     {
-        if ($this->listIsEmpty()) {
+        $node = new Node($value);
+
+        if ($this->isEmpty()) {
             $this->head = $this->last = $node;
         } else {
             $this->last->setNext($node);
@@ -37,7 +41,7 @@ class LinkedList implements LinkedListContract
 
     public function deleteFromFirst(): self
     {
-        if ($this->listIsEmpty()) {
+        if ($this->isEmpty()) {
             return $this;
         }
 
@@ -55,7 +59,7 @@ class LinkedList implements LinkedListContract
 
     public function deleteFromLast(): self
     {
-        if ($this->listIsEmpty()) {
+        if ($this->isEmpty()) {
             return $this;
         }
 

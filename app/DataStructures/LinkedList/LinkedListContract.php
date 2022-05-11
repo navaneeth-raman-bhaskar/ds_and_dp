@@ -6,9 +6,9 @@ namespace App\DataStructures\LinkedList;
 
 interface LinkedListContract
 {
-    public function addToFirst(NodeContract $node): self;
+    public function addToFirst(mixed $node): self;
 
-    public function addToLast(NodeContract $node): self;
+    public function addToLast(mixed $node): self;
 
     public function deleteFromFirst(): self;
 

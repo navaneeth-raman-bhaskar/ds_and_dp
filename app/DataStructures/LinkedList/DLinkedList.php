@@ -8,12 +8,13 @@ class DLinkedList implements LinkedListContract
 {
     use HasShow;
 
-    private ?NodeContract $head = null;
-    private ?NodeContract $last = null;
+    private ?DNode $head = null;
+    private ?DNode $last = null;
 
-    public function addToFirst(NodeContract $node): self
+    public function addToFirst(mixed $value): self
     {
-        if ($this->listIsEmpty()) {
+        $node = new DNode($value);
+        if ($this->isEmpty()) {
             $this->head = $this->last = $node;
         } else {
             $node->setNext($this->head);
@@ -23,9 +24,11 @@ class DLinkedList implements LinkedListContract
         return $this;
     }
 
-    public function addToLast(NodeContract $node): self
+    public function addToLast(mixed $value): self
     {
-        if ($this->listIsEmpty()) {
+        $node = new DNode($value);
+
+        if ($this->isEmpty()) {
             $this->head = $this->last = $node;
         } else {
             $this->last->setNext($node);
@@ -38,7 +41,7 @@ class DLinkedList implements LinkedListContract
 
     public function deleteFromFirst(): self
     {
-        if ($this->listIsEmpty()) {
+        if ($this->isEmpty()) {
             return $this;
         }
 
@@ -55,7 +58,7 @@ class DLinkedList implements LinkedListContract
 
     public function deleteFromLast(): self
     {
-        if ($this->listIsEmpty()) {
+        if ($this->isEmpty()) {
             return $this;
         }
 

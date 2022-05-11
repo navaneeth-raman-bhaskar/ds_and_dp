@@ -4,7 +4,7 @@
 namespace App\DataStructures\LinkedList;
 
 
-class Node implements NodeContract
+class Node
 {
     private ?self $next = null;
 

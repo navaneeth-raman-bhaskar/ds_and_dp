@@ -8,7 +8,7 @@ trait HasShow
 {
     public function show(): string
     {
-        if ($this->listIsEmpty()) {
+        if ($this->isEmpty()) {
             return '||<br>';
         }
 
@@ -21,7 +21,7 @@ trait HasShow
 
     }
 
-    private function listIsEmpty(): bool
+    private function isEmpty(): bool
     {
         return $this->head === null;
     }
