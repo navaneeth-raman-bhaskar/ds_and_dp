@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('linkedlist',[\App\Http\Controllers\DataStructureController::class,'linkedlist']);
